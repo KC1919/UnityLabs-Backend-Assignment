@@ -12,7 +12,7 @@ module.exports.getSellerList = async (req, res) => {
             })
         }
 
-        const sellers = await Seller.find({}).select('-password');
+        const sellers = await Seller.find({}).select('-password').select('-orders');
 
         if (sellers !== null && sellers.length > 0) {
             return res.status(200).json({
@@ -52,7 +52,7 @@ module.exports.getSellerById = async (req, res) => {
             })
         }
 
-        const seller = await Seller.findOne({
+        let seller = await Seller.findOne({
             _id: sellerId
         });
 
@@ -64,17 +64,21 @@ module.exports.getSellerById = async (req, res) => {
             const sellerCatalog = await Catalog.findOne({
                 'sellerId': sellerId
             });
+            
+            let sellerData;
 
             if (sellerCatalog !== null) {
-                console.log(sellerCatalog);
-                seller.catalog = sellerCatalog;
+                // console.log(sellerCatalog);
+                sellerData={seller, 'catalog':sellerCatalog.products}
             }
+
+            console.log(sellerData);
 
             return res.status(200).json({
                 'message': 'List of available sellers!',
                 status: 'success',
                 data: {
-                    seller
+                    sellerData
                 }
             })
         } else {
