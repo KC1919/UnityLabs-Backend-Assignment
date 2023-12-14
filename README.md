@@ -26,14 +26,18 @@ Step-5: Make use of Postman or Thunder-Client, to make API calls to the applicat
 
 2.) Login API: http://localhost:3000/api/auth/login  (POST)
 
-  Example:
+
+  Request-Body Example:
   {
     "username":"test_buyer@email.com",
     "password":"123456789",
     "userType":"buyer"
   }
+  
 
 3.) Logout API: http://localhost:3000/api/auth/logout (GET)   , Pass header- Authorization: Bearer JWT-Token
+
+
 
 **Buyers API's**
 
@@ -65,6 +69,7 @@ Sample Response Data:
 }
 
 Pass the any _id of a seller, received from the above list of seller data
+
 
 2.) Get the catalog of a seller by seller_id:  
 
@@ -113,6 +118,7 @@ Sample Response Body:
     }
   }
 }
+
 
 3.) Send a list of items to create an order for seller with id = seller_id
 
