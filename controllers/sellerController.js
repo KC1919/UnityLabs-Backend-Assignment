@@ -2,6 +2,7 @@ const Seller = require('../models/seller');
 const Buyer = require('../models/buyer');
 const Catalog = require('../models/catalog');
 
+// create catalog
 module.exports.createCatalog = async (req, res) => {
     try {
         const products = req.body.products;
@@ -40,6 +41,7 @@ module.exports.createCatalog = async (req, res) => {
     }
 }
 
+// get all orders of the curent seller
 module.exports.getOrders = async (req, res) => {
     try {
         const orders = await Seller.findOne({

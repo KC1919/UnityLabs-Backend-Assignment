@@ -2,6 +2,7 @@ const Buyer = require('../models/buyer');
 const Seller = require('../models/seller');
 const Catalog = require('../models/catalog');
 
+// get list of all sellers
 module.exports.getSellerList = async (req, res) => {
     try {
 
@@ -39,6 +40,7 @@ module.exports.getSellerList = async (req, res) => {
     }
 }
 
+// get seller catalog
 module.exports.getSellerById = async (req, res) => {
     try {
 
@@ -98,6 +100,7 @@ module.exports.getSellerById = async (req, res) => {
     }
 }
 
+// place an order
 module.exports.placeOrder = async (req, res) => {
     try {
         const sellerId = req.params.seller_id;
