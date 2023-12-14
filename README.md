@@ -26,14 +26,14 @@ Step-5: Make use of Postman or Thunder-Client, to make API calls to the applicat
 
 2.) Login API: http://localhost:3000/api/auth/login  (POST)
 
-
   Request-Body Example:
+  ```json
   {
     "username":"test_buyer@email.com",
     "password":"123456789",
     "userType":"buyer"
   }
-  
+```
 
 3.) Logout API: http://localhost:3000/api/auth/logout (GET)   , Pass header- Authorization: Bearer JWT-Token
 
@@ -45,28 +45,32 @@ Step-5: Make use of Postman or Thunder-Client, to make API calls to the applicat
 
 Sample Response Data:
 
+```json
+
 {
-  "message": "List of available sellers!",
-  "status": "success",
-  "data": {
-    "sellers": [
-      {
-        "_id": "657b039d4bab09f0b13bc524",
-        "name": "Seller-1",
-        "email": "seller1@email.com",
-        "__v": 0,
-        "userType": "seller"
-      },
-      {
-        "_id": "657b03a54bab09f0b13bc527",
-        "name": "Seller-2",
-        "email": "seller2@email.com",
-        "__v": 0,
-        "userType": "seller"
-      }
-    ]
-  }
+   "message": "List of available sellers!",
+   "status": "success",
+   "data": {
+      "sellers": [
+         {
+            "_id": "657b039d4bab09f0b13bc524",
+            "name": "Seller-1",
+            "email": "seller1@email.com",
+            "__v": 0,
+            "userType": "seller"
+         },
+         {
+            "_id": "657b03a54bab09f0b13bc527",
+            "name": "Seller-2",
+            "email": "seller2@email.com",
+            "__v": 0,
+            "userType": "seller"
+         }
+      ]
+   }
 }
+
+```
 
 Pass the any _id of a seller, received from the above list of seller data
 
@@ -76,7 +80,7 @@ Pass the any _id of a seller, received from the above list of seller data
 API: http://localhost:3000/api/buyer/seller-catalog/657b03a54bab09f0b13bc527   (GET)  ,Pass header- Authorization: Bearer JWT-Token
 
 Sample Response Body:
-
+```json
 {
   "message": "List of available sellers!",
   "status": "success",
@@ -118,14 +122,14 @@ Sample Response Body:
     }
   }
 }
-
+```
 
 3.) Send a list of items to create an order for seller with id = seller_id
 
 API: http://localhost:3000/api/buyer/create-order/657b039d4bab09f0b13bc524  (POST)  ,Pass header- Authorization: Bearer JWT-Token
 
 Sample Request Body: Send array of objects, with each object having the product name and price.
-
+```json
 {
   "orderData":[
     {
@@ -142,6 +146,7 @@ Sample Request Body: Send array of objects, with each object having the product 
     }
   ]
 }
+```
 
 **Seller API's**
 
@@ -150,7 +155,7 @@ Sample Request Body: Send array of objects, with each object having the product 
 API: http://localhost:3000/api/seller/create-catalog/  (POST)  ,Pass header- Authorization: Bearer JWT-Token
 
 Sample Request Body: An array of product objects, with name and price of the product
-
+```json
 {
   "products":[
     {
@@ -175,13 +180,14 @@ Sample Request Body: An array of product objects, with name and price of the pro
     }
   ]
 }
+```
 
 2.) Retrieve the list of orders received by a seller 
 
 API: http://localhost:3000/api/seller/orders/   (GET)  ,Pass header- Authorization: Bearer JWT-Token
 
 Sample Response Body:
-
+```json
 {
   "message": "Customer Orders",
   "status": "success",
@@ -214,4 +220,5 @@ Sample Response Body:
     }
   }
 }
+```
 
