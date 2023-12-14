@@ -6,6 +6,7 @@ const verifyUser = async (req, res, next) => {
         const payload = jwt.verify(token, process.env.JWT_SECRET_KEY);
         req.username = payload.username;
         req.userType=payload.userType;
+        req.userId=payload.userId;
         next();
     } catch (error) {
 

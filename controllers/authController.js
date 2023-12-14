@@ -109,7 +109,8 @@ module.exports.login = async (req, res) => {
                 //generating jwt access token
                 const token = jwt.sign({
                     username: user.email,
-                    userType: user.userType
+                    userType: user.userType,
+                    userId: user._id
                 }, process.env.JWT_SECRET_KEY)
 
                 //storing the token in cookie and sending it to the user

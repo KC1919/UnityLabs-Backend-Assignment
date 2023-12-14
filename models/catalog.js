@@ -11,7 +11,7 @@ const catalogSchema=mongoose.Schema({
             required: [true, "Product name must be provided!"]
         },
         price: {
-            type:Number,
+            type:String,
             required: [true, "Product price must be provided!"]
         },
     }]
