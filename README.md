@@ -26,7 +26,7 @@ Step-5: Make use of Postman or Thunder-Client, to make API calls to the applicat
 
 2.) Login API: http://localhost:3000/api/auth/login  (POST)
 
-  Request-Body Example:
+  Request-Body-Example:
   {
     "username":"test_buyer@email.com",
     "password":"123456789",
