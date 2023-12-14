@@ -1,9 +1,13 @@
 **Steps to run the application**
 
 Step-1: Clone the repository
+
 Step-2: Make sure Node js is installed on the server system, if not installed then download install node js.
+
 Step-3: Execute command: 'npm run start' OR node app.js.
+
 Step-4: If the Step-3 is successfull, the application will start running and the server would listen on port 3000 for any incoming requests.
+
 Step-5: Make use of Postman or Thunder-Client, to make API calls to the application.
 
 **Authentication API's**
