@@ -5,5 +5,6 @@ const verifyUser = require('../middlewares/verify');
 
 router
     .post('/create-catalog', verifyUser, sellerController.createCatalog)
+    .get('/orders', verifyUser, sellerController.getOrders)
 
 module.exports=router;

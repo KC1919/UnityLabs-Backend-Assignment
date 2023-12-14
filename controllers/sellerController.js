@@ -7,14 +7,24 @@ module.exports.createCatalog = async (req, res) => {
         const products = req.body.products;
         // const sellerCatalog = await Catalog.findOne({ 'sellerId': req.userId });
         if (products !== null && products.length > 0) {
-            const result = await Catalog.updateOne({ 'sellerId': req.userId }, {
-                $push: { 'products': products }
-            }, { upsert: true });
+            const result = await Catalog.updateOne({
+                'sellerId': req.userId
+            }, {
+                $push: {
+                    'products': products
+                }
+            }, {
+                upsert: true
+            });
 
             if (result !== null) {
-                const sellerCatalog = await Catalog.findOne({ 'sellerId': req.userId });
+                const sellerCatalog = await Catalog.findOne({
+                    'sellerId': req.userId
+                });
                 return res.status(201).json({
-                    message: 'Products added to Catalog!', status: 'success', data: {
+                    message: 'Products added to Catalog!',
+                    status: 'success',
+                    data: {
                         sellerCatalog
                     }
                 })
@@ -27,5 +37,29 @@ module.exports.createCatalog = async (req, res) => {
             status: 'fail',
             error: error.message
         })
+    }
+}
+
+module.exports.getOrders = async (req, res) => {
+    try {
+        const orders = await Seller.findOne({
+            _id: req.userId
+        }, {
+            'orders': 1
+        });
+
+        if (orders !== null) {
+            return res.status(200).json({
+                message: 'Customer Orders',
+                status: 'success',
+                result: orders.length,
+                data: {
+                    orders
+                }
+            })
+        }
+
+    } catch (error) {
+
     }
 }
