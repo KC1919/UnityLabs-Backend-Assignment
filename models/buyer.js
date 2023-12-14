@@ -23,7 +23,11 @@ const buyerSchema = mongoose.Schema({
         items: [{
             name: String
         }]
-    }]
+    }],
+    userType:{
+        type:String,
+        required:true
+    }
 });
 
 const Buyer = mongoose.model('Buyer', buyerSchema);

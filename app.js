@@ -9,6 +9,7 @@ require('dotenv').config({
 
 const connectDb = require('./config/db');
 const authRouter=require('./routes/authRoutes');
+const buyerRouter=require('./routes/buyerRoutes');
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -19,6 +20,7 @@ app.use(cookieParser());
 
 
 app.use('/api/auth', authRouter);
+app.use('/api/buyer', buyerRouter);
 
 
 app.listen(PORT, async (err) => {

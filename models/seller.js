@@ -17,7 +17,11 @@ const sellerSchema=mongoose.Schema({
     },
     orders:[{
         
-    }]
+    }],
+    userType:{
+        type:String,
+        required:true
+    }
 });
 
 const Seller=mongoose.model('Seller',sellerSchema);

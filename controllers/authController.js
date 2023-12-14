@@ -108,7 +108,8 @@ module.exports.login = async (req, res) => {
 
                 //generating jwt access token
                 const token = jwt.sign({
-                    username: user.email
+                    username: user.email,
+                    userType: user.userType
                 }, process.env.JWT_SECRET_KEY)
 
                 //storing the token in cookie and sending it to the user
@@ -117,7 +118,7 @@ module.exports.login = async (req, res) => {
                     httpOnly: false
                 })
 
-                user.password=undefined;
+                user.password = undefined;
 
                 return res.status(200).json({
                     message: 'User logged in successfully',
